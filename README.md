@@ -1,11 +1,11 @@
-# Engineers Hub Platform
+# Engineers Hub Eco System
 
 Engineers Hub株式会社が提供するエンジニア成長支援プラットフォーム「Tech Road/Library/Log」のモノレポジトリです。
 
 ## プロジェクト構造
 
 ```
-engineers-hub/
+engineers-hub-eco-system/
 ├── services/               # 各サービス（フロントエンド＋バックエンド）
 │   ├── tech-road/
 │   │   ├── web/           # Tech Road Webアプリ (SvelteKit)

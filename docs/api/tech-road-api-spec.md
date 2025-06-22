@@ -6,7 +6,7 @@
 |------|------|
 | バージョン | 1.0.0 |
 | 作成日 | 2025-06-22 |
-| ベースURL | https://api.engineers-hub.com/tech-road/v1 |
+| ベースURL | https://api.engineers-hub-eco-system.com/tech-road/v1 |
 
 ## 共通仕様
 
