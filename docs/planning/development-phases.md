@@ -11,11 +11,11 @@ Engineers Hub プラットフォームの段階的な開発計画を定義しま
 - CI/CDパイプラインの設定
 
 ### 実装内容
-- [ ] モノレポ構造のセットアップ
-- [ ] Docker開発環境の構築
-- [ ] 基本的なRust/Axum APIサーバーの構築
+- [x] モノレポ構造のセットアップ
+- [x] Docker開発環境の構築
+- [x] 基本的なRust/Axum APIサーバーの構築（Tech Road API）
 - [ ] SvelteKitフロントエンドの初期設定
-- [ ] PostgreSQLデータベースの設定
+- [x] PostgreSQLデータベースの設定
 - [ ] GitHub Actionsの設定
 
 ### 成果物

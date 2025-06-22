@@ -8,19 +8,10 @@ services:
       POSTGRES_PASSWORD: tech_password
       POSTGRES_DB: tech_db
     ports:
-      - "5432:5432"
+      - "6432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - tech-network
-
-  # Redis Cache
-  redis:
-    image: redis:7-alpine
-    container_name: tech-ecosystem-redis
-    ports:
-      - "6379:6379"
     networks:
       - tech-network
 
@@ -32,7 +23,6 @@ services:
     container_name: tech-road-api
     environment:
       DATABASE_URL: postgresql://tech_user:tech_password@postgres:5432/tech_db
-      REDIS_URL: redis://redis:6379
       RUST_LOG: debug
     ports:
       - "8001:8000"
@@ -42,7 +32,6 @@ services:
       - cargo-target:/app/target
     depends_on:
       - postgres
-      - redis
     networks:
       - tech-network
 
@@ -54,7 +43,6 @@ services:
     container_name: tech-library-api
     environment:
       DATABASE_URL: postgresql://tech_user:tech_password@postgres:5432/tech_db
-      REDIS_URL: redis://redis:6379
       RUST_LOG: debug
     ports:
       - "8002:8000"
@@ -64,7 +52,6 @@ services:
       - cargo-target:/app/target
     depends_on:
       - postgres
-      - redis
     networks:
       - tech-network
 
@@ -76,7 +63,6 @@ services:
     container_name: tech-log-api
     environment:
       DATABASE_URL: postgresql://tech_user:tech_password@postgres:5432/tech_db
-      REDIS_URL: redis://redis:6379
       RUST_LOG: debug
     ports:
       - "8003:8000"
@@ -86,7 +72,6 @@ services:
       - cargo-target:/app/target
     depends_on:
       - postgres
-      - redis
     networks:
       - tech-network
 

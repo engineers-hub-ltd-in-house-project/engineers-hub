@@ -65,8 +65,7 @@ cd services/tech-road/web && pnpm dev       # Run SvelteKit dev server
 - Migrations will be in `services/{service}/api/migrations/`
 
 ### Docker Development
-- PostgreSQL on port 5432
-- Redis on port 6379
+- PostgreSQL on port 6432
 - Tech Road API on port 8001
 - Tech Library API on port 8002  
 - Tech Log API on port 8003
@@ -98,10 +97,22 @@ Core domain entities are defined in docs/architecture/domain-model.md:
 
 ## Current Development Phase
 
-The project is in Phase 0 (Foundation). Next steps:
-1. Implement Tech Road API (Rust/Axum)
+The project is in Phase 0 (Foundation) with Tech Road API implementation in progress. Current status:
+
+### Completed:
+- ✅ Docker development environment setup
+- ✅ Basic Rust/Axum API server structure for Tech Road
+- ✅ PostgreSQL database configuration
+- ✅ Project structure and initial configurations
+
+### In Progress:
+- 🔄 Tech Road API implementation (handlers, models, services)
+- 🔄 Database migrations and schema setup
+
+### Next Steps:
+1. Complete Tech Road API endpoints
 2. Implement Tech Road Web (SvelteKit)
 3. Set up GitHub Actions CI/CD
-4. Complete Docker development environment
+4. Add authentication/authorization
 
 Refer to docs/planning/development-phases.md for the complete roadmap.
