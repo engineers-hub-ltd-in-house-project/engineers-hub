@@ -2,6 +2,10 @@
 
 Engineers Hub株式会社が提供するエンジニア成長支援プラットフォーム「Tech Road/Library/Log」のモノレポジトリです。
 
+## サービスグラウンドデザイン
+
+![image](https://github.com/user-attachments/assets/838c0c8a-7658-434d-84d6-cd95a7b69270)
+
 ## プロジェクト構造
 
 ```
