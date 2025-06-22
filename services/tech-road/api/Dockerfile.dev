@@ -1,0 +1,30 @@
+FROM rust:1.75-slim
+
+# Install development dependencies
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    libssl-dev \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install cargo-watch for hot reloading
+RUN cargo install cargo-watch
+
+WORKDIR /app
+
+# Copy cargo files first for better caching
+COPY Cargo.toml Cargo.lock* ./
+
+# Build dependencies (this layer will be cached)
+RUN mkdir src && \
+    echo "fn main() {}" > src/main.rs && \
+    cargo build && \
+    rm -rf src
+
+# Copy source code
+COPY . .
+
+EXPOSE 8000
+
+# Use cargo-watch for hot reloading in development
+CMD ["cargo", "watch", "-x", "run"]

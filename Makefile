@@ -14,10 +14,10 @@ help:
 # 依存関係のインストール
 install:
 	@echo "Installing dependencies..."
-	cd apps/web && pnpm install
-	cd services/tech-road-api && cargo build
-	cd services/tech-library-api && cargo build
-	cd services/tech-log-api && cargo build
+	cd services/tech-road/web && pnpm install
+	cd services/tech-road/api && cargo build
+	cd services/tech-library/api && cargo build
+	cd services/tech-log/api && cargo build
 
 # 開発環境の起動
 dev:
@@ -28,26 +28,26 @@ dev:
 # テストの実行
 test:
 	@echo "Running tests..."
-	cd apps/web && pnpm test
-	cd services/tech-road-api && cargo test
-	cd services/tech-library-api && cargo test
-	cd services/tech-log-api && cargo test
+	cd services/tech-road/web && pnpm test
+	cd services/tech-road/api && cargo test
+	cd services/tech-library/api && cargo test
+	cd services/tech-log/api && cargo test
 
 # ビルド
 build:
 	@echo "Building all services..."
-	cd apps/web && pnpm build
-	cd services/tech-road-api && cargo build --release
-	cd services/tech-library-api && cargo build --release
-	cd services/tech-log-api && cargo build --release
+	cd services/tech-road/web && pnpm build
+	cd services/tech-road/api && cargo build --release
+	cd services/tech-library/api && cargo build --release
+	cd services/tech-log/api && cargo build --release
 
 # クリーンアップ
 clean:
 	@echo "Cleaning build artifacts..."
-	rm -rf apps/web/build apps/web/.svelte-kit
-	cd services/tech-road-api && cargo clean
-	cd services/tech-library-api && cargo clean
-	cd services/tech-log-api && cargo clean
+	rm -rf services/tech-road/web/build services/tech-road/web/.svelte-kit
+	cd services/tech-road/api && cargo clean
+	cd services/tech-library/api && cargo clean
+	cd services/tech-log/api && cargo clean
 
 # Docker環境の起動
 docker-up:
