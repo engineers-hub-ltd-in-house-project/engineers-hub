@@ -34,24 +34,30 @@ engineers-hub/
 ## 技術スタック
 
 ### フロントエンド
-- **Framework**: SvelteKit
-- **Build Tool**: Vite
-- **UI Library**: Svelte
-- **Styling**: TailwindCSS (予定)
-- **State Management**: Svelte Stores
+| カテゴリ | 技術 |
+|---|---|
+| Framework | SvelteKit |
+| Build Tool | Vite |
+| UI Library | Svelte |
+| Styling | TailwindCSS (予定) |
+| State Management | Svelte Stores |
 
 ### バックエンド
-- **言語**: Rust
-- **Web Framework**: Axum
-- **Database Access**: sqlx
-- **API**: RESTful API + gRPC (サービス間通信)
-- **Database**: PostgreSQL
+| カテゴリ | 技術 |
+|---|---|
+| 言語 | Rust |
+| Web Framework | Axum |
+| Database Access | sqlx |
+| API | RESTful API + gRPC (サービス間通信) |
+| Database | PostgreSQL |
 
 ### インフラストラクチャ
-- **Cloud**: AWS
-- **Container**: Docker
-- **Orchestration**: ECS or EKS
-- **CI/CD**: GitHub Actions
+| カテゴリ | 技術 |
+|---|---|
+| Cloud | AWS |
+| Container | Docker |
+| Orchestration | ECS or EKS |
+| CI/CD | GitHub Actions |
 
 ## 開発環境セットアップ
 
