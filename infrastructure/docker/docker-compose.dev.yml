@@ -1,0 +1,120 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: tech-ecosystem-postgres
+    environment:
+      POSTGRES_USER: tech_user
+      POSTGRES_PASSWORD: tech_password
+      POSTGRES_DB: tech_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - tech-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: tech-ecosystem-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - tech-network
+
+  # Tech Road API
+  tech-road-api:
+    build:
+      context: ../../services/tech-road-api
+      dockerfile: Dockerfile.dev
+    container_name: tech-road-api
+    environment:
+      DATABASE_URL: postgresql://tech_user:tech_password@postgres:5432/tech_db
+      REDIS_URL: redis://redis:6379
+      RUST_LOG: debug
+    ports:
+      - "8001:8000"
+    volumes:
+      - ../../services/tech-road-api:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - cargo-target:/app/target
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - tech-network
+
+  # Tech Library API
+  tech-library-api:
+    build:
+      context: ../../services/tech-library-api
+      dockerfile: Dockerfile.dev
+    container_name: tech-library-api
+    environment:
+      DATABASE_URL: postgresql://tech_user:tech_password@postgres:5432/tech_db
+      REDIS_URL: redis://redis:6379
+      RUST_LOG: debug
+    ports:
+      - "8002:8000"
+    volumes:
+      - ../../services/tech-library-api:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - cargo-target:/app/target
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - tech-network
+
+  # Tech Log API
+  tech-log-api:
+    build:
+      context: ../../services/tech-log-api
+      dockerfile: Dockerfile.dev
+    container_name: tech-log-api
+    environment:
+      DATABASE_URL: postgresql://tech_user:tech_password@postgres:5432/tech_db
+      REDIS_URL: redis://redis:6379
+      RUST_LOG: debug
+    ports:
+      - "8003:8000"
+    volumes:
+      - ../../services/tech-log-api:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - cargo-target:/app/target
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - tech-network
+
+  # Frontend Web App
+  web:
+    build:
+      context: ../../apps/web
+      dockerfile: Dockerfile.dev
+    container_name: tech-ecosystem-web
+    environment:
+      PUBLIC_API_URL: http://localhost:8001
+      PUBLIC_LIBRARY_API_URL: http://localhost:8002
+      PUBLIC_LOG_API_URL: http://localhost:8003
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../apps/web:/app
+      - /app/node_modules
+    networks:
+      - tech-network
+
+networks:
+  tech-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  cargo-cache:
+  cargo-target:

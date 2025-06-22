@@ -1,0 +1,122 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Build outputs
+target/
+dist/
+build/
+out/
+generated/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+docker-compose.override.yml
+
+# IDE and Editors
+.vscode/
+*.code-workspace
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*.swn
+.vim/
+*~
+\#*\#
+.\#*
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+crash.log
+crash.*.log
+
+# Testing
+coverage/
+.nyc_output/
+
+# Framework specific
+.svelte-kit/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vercel/
+.netlify/
+*.tsbuildinfo
+
+# Rust
+**/*.rs.bk
+Cargo.lock
+.cargo/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+.docker/
+.docker-volumes/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.directory
+.Trash-*
+
+# Security
+*.pem
+*.key
+*.crt
+.aws/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+.cache/
+tmp/
+temp/
+
+# Python (for scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+
+# Monitoring
+.metrics/
+.traces/
